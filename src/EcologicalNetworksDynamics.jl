@@ -49,36 +49,36 @@ import .Internals
 # This module is needed for package component developers.
 include("./Framework/Framework.jl")
 using .Framework
-export add!, properties, blueprints, components
+export add!, properties, components
 
-include("./dedicate_framework_to_model.jl")
+#  include("./dedicate_framework_to_model.jl")
 
-#-------------------------------------------------------------------------------------------
-# "Outer" parts: develop user-facing stuff here.
+#  #-------------------------------------------------------------------------------------------
+#  # "Outer" parts: develop user-facing stuff here.
 
-# Factorize out common optional argument processing.
-include("./kwargs_helpers.jl")
-using .KwargsHelpers
+#  # Factorize out common optional argument processing.
+#  include("./kwargs_helpers.jl")
+#  using .KwargsHelpers
 
-# Factorize out common user input data preprocessing.
-include("./GraphDataInputs/GraphDataInputs.jl")
-using .GraphDataInputs
+#  # Factorize out common user input data preprocessing.
+#  include("./GraphDataInputs/GraphDataInputs.jl")
+#  using .GraphDataInputs
 
-# Encapsulated views into internal arrays or pseudo-arrays.
-include("./graph_views.jl")
-using .GraphViews
+#  # Encapsulated views into internal arrays or pseudo-arrays.
+#  include("./graph_views.jl")
+#  using .GraphViews
 
-# Convenience macro to wire this all together.
-include("./expose_data.jl")
+#  # Convenience macro to wire this all together.
+#  include("./expose_data.jl")
 
-# The actual user-facing components of the package are defined there,
-# connecting them to the internals via the framework.
-include("./components/main.jl")
-include("./methods/main.jl")
+#  # The actual user-facing components of the package are defined there,
+#  # connecting them to the internals via the framework.
+#  include("./components/main.jl")
+#  include("./methods/main.jl")
 
-# Additional exposed utils built on top of components and methods.
-include("./default_model.jl")
-include("./nontrophic_layers.jl")
+#  # Additional exposed utils built on top of components and methods.
+#  include("./default_model.jl")
+#  include("./nontrophic_layers.jl")
 
 # Avoid Revise interruptions when redefining methods and properties.
 Framework.REVISING = true
