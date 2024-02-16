@@ -102,6 +102,8 @@ using Crayons
 using MacroTools
 using OrderedCollections
 
+argerr(m) = throw(ArgumentError(m))
+const Option{T} = Union{T,Nothing}
 
 # Base structure.
 include("./component.jl")
