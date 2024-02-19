@@ -1,46 +1,46 @@
 module EcologicalNetworksDynamics
 
-using Crayons
-using MacroTools
-using OrderedCollections
-using SparseArrays
+#  using Crayons
+#  using MacroTools
+#  using OrderedCollections
+#  using SparseArrays
 
-#-------------------------------------------------------------------------------------------
-# Shared API internals.
-# Most of these should move to the dedicated components files
-# once the internals have been refactored to not depend on them.
+#  #-------------------------------------------------------------------------------------------
+#  # Shared API internals.
+#  # Most of these should move to the dedicated components files
+#  # once the internals have been refactored to not depend on them.
 
-# Common display utils.
-include("./display.jl")
-using .Display
+#  # Common display utils.
+#  include("./display.jl")
+#  using .Display
 
-# Common error to throw on user input error.
-argerr(mess) = throw(ArgumentError(mess))
+#  # Common error to throw on user input error.
+#  argerr(mess) = throw(ArgumentError(mess))
 
-# Alias common types.
-const Option{T} = Union{Nothing,T}
-const SparseMatrix{T} = SparseMatrixCSC{T,Int64}
+#  # Alias common types.
+#  const Option{T} = Union{Nothing,T}
+#  const SparseMatrix{T} = SparseMatrixCSC{T,Int64}
 
-include("./AliasingDicts/AliasingDicts.jl")
-using .AliasingDicts
+#  include("./AliasingDicts/AliasingDicts.jl")
+#  using .AliasingDicts
 
-include("./multiplex_api.jl")
-using .MultiplexApi
+#  include("./multiplex_api.jl")
+#  using .MultiplexApi
 
-#-------------------------------------------------------------------------------------------
-# "Inner" parts: legacy internals.
+#  #-------------------------------------------------------------------------------------------
+#  # "Inner" parts: legacy internals.
 
-# The entire implementation has been brutally made private
-# so that we can focus on constructing
-# an implementation-independent API on top of it, from scratch.
-# Once this API is completed, we expect publishing the package,
-# the associated article, and then only perform deep refactoring of the "Internals".
-include("./Internals/Internals.jl")
+#  # The entire implementation has been brutally made private
+#  # so that we can focus on constructing
+#  # an implementation-independent API on top of it, from scratch.
+#  # Once this API is completed, we expect publishing the package,
+#  # the associated article, and then only perform deep refactoring of the "Internals".
+#  include("./Internals/Internals.jl")
 
-# Basic API reconstruction principle:
-#   make the package work again,
-#   but without re-exporting anything from Internals.
-import .Internals
+#  # Basic API reconstruction principle:
+#  #   make the package work again,
+#  #   but without re-exporting anything from Internals.
+#  import .Internals
 
 #-------------------------------------------------------------------------------------------
 # "Abstract" parts: the framework for developing user API.
