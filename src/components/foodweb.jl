@@ -111,12 +111,14 @@ A model `m` with a `Foodweb` has the following properties.
   - `m.trophic_levels`: calculate the trophic level of every species in the model.
   - Distinguishing between `producers` (species without outgoing trophic links)
     and `consumers` (species with outgoing trophic links):
+
       + `m.{producers,consumers}_mask`: a boolean vector to select either kind of species.
       + `m.n_{producers,consumers}`: count number of species of either kind.
       + `is_{producer,consumer}(m, i)`: check whether species `i` (name or index) is of either kind.
       + `m.{producers,consumer}_indices`: iterate over either species kind indices.
       + `m.{producers,consumer}_{sparse,dense}_index`: obtain a
         \$species\\_name \\mapsto species\\_index\$ mapping:
+
           * the `sparse` index yields indices valid within the whole collection of species.
           * the `dense` index yields indices only valid within the restricted collection
             of species of either kind.
@@ -270,7 +272,7 @@ mutable struct Foodweb <: ModelBlueprint
 
                     #! format: off
                     Internals.model_foodweb_from_C(
-                        Internals.nichemodel,
+                        Internals.niche_model,
                         S, C, nothing, # old 'p_forbidden' ?
                         tol, rc, rd, max,
                     )
@@ -283,7 +285,7 @@ mutable struct Foodweb <: ModelBlueprint
 
                     #! format: off
                     Internals.model_foodweb_from_L(
-                        Internals.nichemodel,
+                        Internals.niche_model,
                         S, L, nothing, # old 'p_forbidden' ?
                         tol, rc, rd, max,
                     )
@@ -302,7 +304,7 @@ mutable struct Foodweb <: ModelBlueprint
 
                 #! format: off
                 Internals.model_foodweb_from_C(
-                    Internals.cascademodel,
+                    Internals.cascade_model,
                     S, C, nothing, # old 'p_forbidden' ?
                     tol, rc, rd, max,
                 )

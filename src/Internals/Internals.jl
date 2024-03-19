@@ -33,7 +33,8 @@ import DifferentialEquations.SSRootfind
 import DifferentialEquations.Tsit5
 using DiffEqBase
 using DiffEqCallbacks
-using EcologicalNetworks
+using Distributions
+using LinearAlgebra
 using Graphs
 using Mangal
 using OrderedCollections
@@ -66,6 +67,7 @@ include("./inputs/biological_rates.jl")
 include("./inputs/environment.jl")
 include("./inputs/temperature_dependent_rates.jl")
 include("./inputs/producer_growth.jl")
+include("./inputs/structural-models.jl")
 include("./model/model_parameters.jl")
 include("./model/producer_growth.jl")
 include("./model/set_temperature.jl")
@@ -101,7 +103,7 @@ export BioenergeticResponse
 export biomass
 export BioRates
 export boltzmann
-export cascademodel
+export cascade_model
 export ClassicResponse
 export coefficient_of_variation
 export community_cv
@@ -153,12 +155,10 @@ export max_trophic_level
 export mean_trophic_level
 export min_max
 export ModelParameters
-export mpnmodel
 export multiplex_network_parameters_names
 export MultiplexNetwork
 export n_links
-export nestedhierarchymodel
-export nichemodel
+export niche_model
 export NIntakeParams
 export nontrophic_adjacency_matrix
 export NonTrophicIntensity

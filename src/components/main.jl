@@ -113,3 +113,6 @@ include("./functional_responses.jl")
 # Metabolism and Mortality are also code components,
 # but they are not reified yet and only reduce
 # to the single data component they each bring.
+
+export niche_model
+export cascade_model

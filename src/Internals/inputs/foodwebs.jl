@@ -213,21 +213,6 @@ function FoodWeb(
 end
 
 function FoodWeb(
-    uni_net::UnipartiteNetwork;
-    Z::Real = 1,
-    M::AbstractVector = compute_mass(uni_net.edges, Z),
-    metabolic_class::Vector{String} = default_metabolic_class(uni_net.edges),
-    method::String = "unspecified",
-    quiet = false,
-)
-    is_from_mangal = isa(uni_net.S, Vector{Mangal.MangalNode})
-    species = is_from_mangal ? [split(string(s), ": ")[2] for s in uni_net.S] : uni_net.S
-    quiet || is_connected(SimpleDiGraph(uni_net.edges)) || @warn disconnected_warning
-    A = sparse(uni_net.edges)
-    FoodWeb(A, species, M, metabolic_class, method)
-end
-
-function FoodWeb(
     model::Function,
     S = nothing;
     C = nothing,
@@ -554,7 +539,7 @@ end
 
 function check_structural_model(model)
     model_name = model |> Symbol |> string
-    implemented_models = ["nichemodel", "nestedhierarchymodel", "cascademodel", "mpnmodel"]
+    implemented_models = ["niche_model", "cascade_model"]
     model_name ∈ implemented_models ||
         throw(ArgumentError("Invalid 'model': should be in $implemented_models."))
 end
